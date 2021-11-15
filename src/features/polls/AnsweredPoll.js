@@ -22,38 +22,42 @@ const AnsweredPoll = ({ id }) => {
   );
   const { Text } = Typography;
   return (
-    <div>
+    <div className="site-card-border-less-wrapper">
       <Card
         title={
           <Space>
             <UserAvatar avatarURL={avatarURL} />
-            <Text>{name} ask : </Text>
+            <Text>{name} </Text>
           </Space>
         }
         bordered={true}
         style={{ width: 300 }}
       >
         <ul>
-          <li>
-            {optionOne.text}
-            {optionOne.votes.includes(user) ? (
-              <span>&lt;- Your choice</span>
-            ) : null}
-          </li>
-          <Progress percent={optionOnePercent} />
-          <Text>
-            chosen by {optionOne.votes.length} out of {totalVotes} users
-          </Text>
-          <li>
-            {optionTwo.text}
-            {optionTwo.votes.includes(user) ? (
-              <span>&lt;- Your choice</span>
-            ) : null}
-          </li>
-          <Progress percent={optionTwoPercent} />
-          <Text>
-            chosen by {optionTwo.votes.length} out of {totalVotes} users
-          </Text>
+          <Space>
+            <li>
+              {optionOne.text}
+              {optionOne.votes.includes(user) ? (
+                <span>&lt;- Your choice</span>
+              ) : null}
+            </li>
+            <Progress percent={optionOnePercent} />
+            <Text>
+              chosen by {optionOne.votes.length} out of {totalVotes} users
+            </Text>
+          </Space>
+          <Space>
+            <li>
+              {optionTwo.text}
+              {optionTwo.votes.includes(user) ? (
+                <span>&lt;- Your choice</span>
+              ) : null}
+            </li>
+            <Progress percent={optionTwoPercent} />
+            <Text>
+              chosen by {optionTwo.votes.length} out of {totalVotes} users
+            </Text>
+          </Space>
         </ul>
         <Space>
           <Text code>{formatDate(timestamp)}</Text>

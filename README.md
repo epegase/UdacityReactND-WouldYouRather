@@ -26,6 +26,15 @@ npm start
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+## In Progress
+
+- [ ] Comments and refactoring of codebase
+- [ ] Perfomance Optimization (use of memo hook ?)
+- [ ] Better User Experience (CSS...)
+- [ ] Add Spinner and Skeleton UI for pending requests
+- [ ] Deploy the App
+- [ ] Do a course tutorial in Youtube for Redux
+
 ## Credits
 
 To complete this project, I read or watch the following ressources :

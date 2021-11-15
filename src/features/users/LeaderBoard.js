@@ -5,6 +5,7 @@ import { selectUsersIds } from "./usersSlice";
 
 const LeaderBoard = () => {
   const userIDs = useSelector(selectUsersIds);
+
   return (
     <div>
       {userIDs.map((id) => (

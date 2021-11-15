@@ -14,7 +14,6 @@ export const addNewPoll = createAsyncThunk(
   "polls/addNewPoll",
   async (question) => {
     const response = await saveQuestion(question);
-    console.log(response);
     return response;
   }
 );

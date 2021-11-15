@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Card, Radio, Space, Button, Typography, Avatar, Image } from "antd";
+import { Card, Radio, Space, Button, Typography } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { selectPollById, savePollAnswer } from "../polls/pollsSlice";
 import { formatDate } from "../../utils/helpers";
 import { selectAuthedUser } from "../authuser/authuserSlice";
 import { selectUserById } from "../users/usersSlice";
 import { useHistory } from "react-router-dom";
+import UserAvatar from "../users/Avatar";
 
 const UansweredPoll = ({ id }) => {
   const { Text } = Typography;
@@ -37,7 +38,7 @@ const UansweredPoll = ({ id }) => {
       <Card
         title={
           <Space>
-            <Avatar src={<Image src={avatarURL} style={{ width: 32 }} />} />
+            <UserAvatar avatarURL={avatarURL} />
             <Text>{name} ask : </Text>
           </Space>
         }

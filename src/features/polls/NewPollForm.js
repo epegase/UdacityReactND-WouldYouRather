@@ -33,6 +33,7 @@ const NewPollForm = () => {
         labelCol={{ span: 4, offset: 2 }}
         wrapperCol={{ span: 8, offset: 2 }}
       >
+        <h3>“Would You Rather”</h3>
         <Form.Item label="Option One">
           <Input
             placeholder="Enter Option One Text Here"

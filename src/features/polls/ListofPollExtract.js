@@ -6,7 +6,6 @@ const ListofPollExtract = ({ idsList, emptyListNote }) => {
   const { Text } = Typography;
   return (
     <>
-      <Text level={2}>Would You Rather...</Text>
       {idsList.length ? (
         idsList.map((id) => <PollExtract key={id} id={id} />)
       ) : (

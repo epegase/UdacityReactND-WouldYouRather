@@ -5,14 +5,12 @@ import { formatDate } from "../../utils/helpers";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectPollById } from "./pollsSlice";
-import { selectAllUsers, selectUserById } from "../users/usersSlice";
+import { selectUserById } from "../users/usersSlice";
 import { selectAuthedUser } from "../authuser/authuserSlice";
 
 const PollExtract = ({ id }) => {
   const question = useSelector((state) => selectPollById(state, id));
   const { optionOne, timestamp } = question;
-  //const users = useSelector(selectAllUsers);
-  //const user = users[question.author];
   const authuser = useSelector(selectAuthedUser);
   const authuserById = useSelector((state) => selectUserById(state, authuser));
   const { name, avatarURL } = authuserById;
@@ -29,6 +27,7 @@ const PollExtract = ({ id }) => {
         bordered={true}
         style={{ width: 300 }}
       >
+        <Text level={2}>Would You Rather...</Text>
         <Radio.Group>
           <Space direction="vertical">
             <Radio value={"optionOne"}>{optionOne.text.slice(0, 40)}...?</Radio>
