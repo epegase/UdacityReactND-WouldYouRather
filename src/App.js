@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import { useSelector } from "react-redux";
 import HomePage from "./pages/HomePage";
 import PollDetails from "./pages/PollDetails";
 import NewPoll from "./pages/NewPoll";
 import LeaderBoardPage from "./pages/LeaderBoardPage";
 import LoginPage from "./pages/LoginPage";
+import Page404 from "./pages/Page404";
+import { PrivateRoute } from "./features/authuser/PrivateRoute";
 
 function App() {
   return (
@@ -14,17 +15,20 @@ function App() {
         <Route exact path="/">
           <LoginPage />
         </Route>
-        <Route exact path="/homepage">
+        <PrivateRoute exact path="/homepage">
           <HomePage />
-        </Route>
-        <Route exact path="/add">
+        </PrivateRoute>
+        <PrivateRoute exact path="/add">
           <NewPoll />
-        </Route>
-        <Route exact path="/leaderboard">
+        </PrivateRoute>
+        <PrivateRoute exact path="/leaderboard">
           <LeaderBoardPage />
-        </Route>
-        <Route exact path="/questions/:question_id">
+        </PrivateRoute>
+        <PrivateRoute exact path="/questions/:question_id">
           <PollDetails />
+        </PrivateRoute>
+        <Route path="*">
+          <Page404 />
         </Route>
       </Switch>
     </Router>

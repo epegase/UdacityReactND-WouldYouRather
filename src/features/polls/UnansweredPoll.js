@@ -7,6 +7,7 @@ import { selectAuthedUser } from "../authuser/authuserSlice";
 import { selectUserById } from "../users/usersSlice";
 import { useHistory } from "react-router-dom";
 import UserAvatar from "../users/Avatar";
+import Page404 from "../../pages/Page404";
 
 const UansweredPoll = ({ id }) => {
   const { Text } = Typography;
@@ -26,12 +27,14 @@ const UansweredPoll = ({ id }) => {
   const history = useHistory();
   const answer = value;
   const handleVote = () => {
-    console.log(answer);
     if (answer !== "") {
       dispatch(savePollAnswer({ authedUser: authuser, qid: id, answer }));
     }
     history.push("/homepage");
   };
+  if (pollId === null) {
+    return <Page404 />;
+  }
 
   return (
     <div className="site-card-border-less-wrapper">

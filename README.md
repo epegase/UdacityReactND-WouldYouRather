@@ -43,3 +43,4 @@ To complete this project, I read or watch the following ressources :
 - [Redux Essentials](https://redux.js.org/tutorials/essentials/part-1-overview-concepts), Redux Documentation.
 - To Know more about createEntityAdapter i use to normalise my state, i read the [api documentation](https://redux-toolkit.js.org/api/createEntityAdapter) and watch the [createEntityAdapter tutorial of Rowadz in Youtube](https://www.youtube.com/watch?v=5zmaUSkyE1I&list=PLM0LBHjz37LW0zVaEjpeCmw-WgglfXWnI), highly recommended.
 - To get a difference of Arrays (intersection of two arrays), i borrow the function in the article ["Intersection and Difference of Arrays in JavaScript"](https://usefulangle.com/post/189/javascript-array-intersection-difference)
+- Credit to the [repository of Marianna](https://github.com/MariannaAtPlay/reactnd-project-would-you-rather). I observed how she approached redux data flow and connect redux store with react components.

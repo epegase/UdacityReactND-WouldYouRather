@@ -4,7 +4,7 @@ import { selectAllUsers, fetchUsers } from "../users/usersSlice";
 import { fetchPolls } from "../polls/pollsSlice";
 import { Form, Button, Select, Image, Typography } from "antd";
 import { login } from "../authuser/authuserSlice";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 const Login = () => {
   // component state
@@ -27,6 +27,7 @@ const Login = () => {
 
   // event handler functions
   const history = useHistory();
+  const { state } = useLocation();
   const handleChange = (e, { value }) => {
     setValue({ value });
   };
@@ -36,7 +37,8 @@ const Login = () => {
     e.preventDefault();
     if (idAuthuser !== "") {
       dispatch(login(idAuthuser));
-      history.push("/homepage");
+      history.push(state?.from || "/homepage");
+      // <Redirect to={state?.from || "/homepage"} />;
     } else {
       SetError("Please, select a user");
     }

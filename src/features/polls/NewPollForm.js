@@ -3,6 +3,7 @@ import { Form, Input, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewPoll } from "../polls/pollsSlice";
 import { selectAuthedUser } from "../authuser/authuserSlice";
+import { useHistory } from "react-router";
 
 const NewPollForm = () => {
   // component state (local)
@@ -15,6 +16,7 @@ const NewPollForm = () => {
   // event handlers
 
   const dispatch = useDispatch();
+  const history = useHistory();
   const author = useSelector(selectAuthedUser);
   const onSubmitNewPoll = (e) => {
     e.preventDefault();
@@ -23,6 +25,7 @@ const NewPollForm = () => {
     }
     setOptionOne("");
     setOptionTwo("");
+    history.push("/homepage");
   };
   return (
     <section>

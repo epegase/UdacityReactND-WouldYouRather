@@ -3,9 +3,10 @@ import { formatDate } from "../../utils/helpers";
 import { useSelector } from "react-redux";
 import { selectPollById } from "../polls/pollsSlice";
 import { selectUserById } from "../users/usersSlice";
-import { Card, Space, Typography, Progress } from "antd";
+import { Card, Space, Typography, Progress, Divider, Badge } from "antd";
 import { selectAuthedUser } from "../authuser/authuserSlice";
 import UserAvatar from "../users/Avatar";
+import Page404 from "../../pages/Page404";
 
 const AnsweredPoll = ({ id }) => {
   const question = useSelector((state) => selectPollById(state, id));
@@ -21,6 +22,9 @@ const AnsweredPoll = ({ id }) => {
     (optionTwo.votes.length / totalVotes) * 100
   );
   const { Text } = Typography;
+  if (question === null) {
+    return <Page404 />;
+  }
   return (
     <div className="site-card-border-less-wrapper">
       <Card
@@ -34,31 +38,29 @@ const AnsweredPoll = ({ id }) => {
         style={{ width: 300 }}
       >
         <ul>
-          <Space>
-            <li>
-              {optionOne.text}
-              {optionOne.votes.includes(user) ? (
-                <span>&lt;- Your choice</span>
-              ) : null}
-            </li>
-            <Progress percent={optionOnePercent} />
-            <Text>
-              chosen by {optionOne.votes.length} out of {totalVotes} users
-            </Text>
-          </Space>
-          <Space>
-            <li>
-              {optionTwo.text}
-              {optionTwo.votes.includes(user) ? (
-                <span>&lt;- Your choice</span>
-              ) : null}
-            </li>
-            <Progress percent={optionTwoPercent} />
-            <Text>
-              chosen by {optionTwo.votes.length} out of {totalVotes} users
-            </Text>
-          </Space>
+          <li>
+            {optionOne.votes.includes(authuser) ? (
+              <Badge.Ribbon text="Your choice" color="red"></Badge.Ribbon>
+            ) : null}
+            {optionOne.text}
+          </li>
+          <Progress percent={optionOnePercent} />
+          <Text>
+            chosen by {optionOne.votes.length} out of {totalVotes} users
+          </Text>
+          <Divider />
+          <li>
+            {optionTwo.votes.includes(authuser) ? (
+              <Badge.Ribbon text="Your choice" color="red"></Badge.Ribbon>
+            ) : null}
+            {optionTwo.text}
+          </li>
+          <Progress percent={optionTwoPercent} />
+          <Text>
+            chosen by {optionTwo.votes.length} out of {totalVotes} users
+          </Text>
         </ul>
+        <Divider />
         <Space>
           <Text code>{formatDate(timestamp)}</Text>
         </Space>
