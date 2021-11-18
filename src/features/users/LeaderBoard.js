@@ -1,27 +1,33 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import UserDashboard from "./UserDashboard";
-import { selectUsersIds } from "./usersSlice";
+import { selectUsersIds, selectUsersEntities } from "./usersSlice";
 
 const LeaderBoard = () => {
   const userIDs = useSelector(selectUsersIds);
 
-  //const users = useSelector(selectAllUsers);
-
-  /* const sortedUserIDs = Object.values(users).sort((idA, idB) => {
-    const scoreA =
-      Object.keys(users[idA].answers).length + users[idA].questions.length;
-    const scoreB =
-      Object.keys(users[idB].answers).length + users[idB].questions.length;
-
-    return scoreB - scoreA;
-  }); */
+  const userEntities = useSelector(selectUsersEntities);
 
   return (
     <div>
       {userIDs
-        .map((id) => <UserDashboard key={id} id={id} />)
-        .sort((a, b) => a.score - b.score)}
+        .map((id) => (
+          <UserDashboard
+            key={id}
+            id={id}
+            name={userEntities[id].name}
+            avatarURL={userEntities[id].avatarURL}
+            answerCount={Object.keys(userEntities[id].answers).length}
+            questionCount={userEntities[id].questions.length}
+            score={
+              Object.keys(userEntities[id].answers).length +
+              userEntities[id].questions.length
+            }
+          />
+        ))
+        .sort((a, b) => {
+          return b.props.score - a.props.score;
+        })}
     </div>
   );
 };

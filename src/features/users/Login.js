@@ -14,7 +14,7 @@ const Login = () => {
   // load state values
   const dispatch = useDispatch();
   const users = useSelector(selectAllUsers);
-  console.log(users);
+
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);

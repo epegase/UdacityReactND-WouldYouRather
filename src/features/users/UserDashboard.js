@@ -1,15 +1,14 @@
 import React from "react";
 import { Card, Typography, Space, Divider, Statistic, Row, Col } from "antd";
 import UserAvatar from "../users/Avatar";
-import { selectUserById } from "./usersSlice";
-import { useSelector } from "react-redux";
 
-const UserDashboard = ({ id }) => {
-  const user = useSelector((state) => selectUserById(state, id));
-  const { name, avatarURL, answers, questions } = user;
-  const answerCount = Object.keys(answers).length;
-  const questionCount = questions.length;
-  const score = Object.keys(answers).length + questions.length;
+const UserDashboard = ({
+  name,
+  avatarURL,
+  answerCount,
+  questionCount,
+  score,
+}) => {
   const { Text } = Typography;
 
   return (
