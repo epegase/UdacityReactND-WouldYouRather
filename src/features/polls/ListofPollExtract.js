@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography } from "antd";
 import PollExtract from "./PollExtract";
+import PropTypes from "prop-types";
 
 const ListofPollExtract = ({ idsList, emptyListNote }) => {
   const { Text } = Typography;
@@ -13,6 +14,10 @@ const ListofPollExtract = ({ idsList, emptyListNote }) => {
       )}
     </>
   );
+};
+
+ListofPollExtract.propTypes = {
+  idsList: PropTypes.array.isRequired,
 };
 
 export default ListofPollExtract;

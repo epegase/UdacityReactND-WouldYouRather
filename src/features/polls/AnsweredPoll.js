@@ -22,9 +22,11 @@ const AnsweredPoll = ({ id }) => {
     (optionTwo.votes.length / totalVotes) * 100
   );
   const { Text } = Typography;
+
   if (question === null) {
     return <Page404 />;
   }
+
   return (
     <div className="site-card-border-less-wrapper">
       <Card

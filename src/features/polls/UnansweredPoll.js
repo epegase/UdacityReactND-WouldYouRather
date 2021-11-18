@@ -5,7 +5,7 @@ import { selectPollById, savePollAnswer } from "../polls/pollsSlice";
 import { formatDate } from "../../utils/helpers";
 import { selectAuthedUser } from "../authuser/authuserSlice";
 import { selectUserById } from "../users/usersSlice";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import UserAvatar from "../users/Avatar";
 import Page404 from "../../pages/Page404";
 
@@ -32,10 +32,17 @@ const UansweredPoll = ({ id }) => {
     }
     history.push("/homepage");
   };
+
+  let { question_id } = useParams();
+  console.log(question_id);
+  /* if (pollId === null && question_id !== id) {
+    dispatch(logout());
+    history.push("/");
+    return <Page404 />;
+  } */
   if (pollId === null) {
     return <Page404 />;
   }
-
   return (
     <div className="site-card-border-less-wrapper">
       <Card

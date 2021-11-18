@@ -7,7 +7,11 @@ import { useSelector } from "react-redux";
 const UserDashboard = ({ id }) => {
   const user = useSelector((state) => selectUserById(state, id));
   const { name, avatarURL, answers, questions } = user;
+  const answerCount = Object.keys(answers).length;
+  const questionCount = questions.length;
+  const score = Object.keys(answers).length + questions.length;
   const { Text } = Typography;
+
   return (
     <div className="site-card-border-less-wrapper">
       <Card
@@ -23,16 +27,16 @@ const UserDashboard = ({ id }) => {
       >
         <Row>
           <Col span={16}>
-            <Text>Answered Questions: {Object.keys(answers).length}</Text>
+            <Text>Answered Questions: {answerCount} </Text>
             <Divider />
-            <Text>Created Questions: {questions.length}</Text>
+            <Text>Created Questions: {questionCount}</Text>
             <Divider />
           </Col>
           <Col span={8}>
             <Card>
               <Statistic
                 title="SCORE:"
-                value={Object.keys(answers).length + questions.length}
+                value={score}
                 valueStyle={{ color: "#3f8600" }}
               />
             </Card>

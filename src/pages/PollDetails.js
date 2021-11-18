@@ -7,6 +7,8 @@ import { Typography } from "antd";
 import { useSelector } from "react-redux";
 import { selectAuthedUser } from "../features/authuser/authuserSlice";
 import { selectUserById } from "../features/users/usersSlice";
+import { selectPollIds } from "../features/polls/pollsSlice";
+import Page404 from "./Page404";
 
 const PollDetails = () => {
   /*  use the `useParams` hook here to access
@@ -19,6 +21,11 @@ const PollDetails = () => {
     ? true
     : false;
   const { Text } = Typography;
+
+  const pollIDs = useSelector(selectPollIds);
+  if (!pollIDs.includes(id)) {
+    return <Page404 />;
+  }
 
   return (
     <>

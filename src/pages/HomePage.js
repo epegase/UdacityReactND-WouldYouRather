@@ -23,10 +23,8 @@ const HomePage = () => {
   const authuser = useSelector(selectAuthedUser);
   const authuserById = useSelector((state) => selectUserById(state, authuser));
   const ListofPollId = useSelector(selectPollIds);
-  console.log(ListofPollId);
   const answeredQuestionIds = Object.keys(authuserById.answers);
 
-  console.log(answeredQuestionIds);
   const unansweredQuestionIds = ListofPollId.filter(function (x) {
     if (answeredQuestionIds.indexOf(x) === -1) return true;
     else return false;

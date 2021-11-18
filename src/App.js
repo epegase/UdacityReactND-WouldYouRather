@@ -15,16 +15,16 @@ function App() {
         <Route exact path="/">
           <LoginPage />
         </Route>
-        <PrivateRoute exact path="/homepage">
+        <PrivateRoute path="/homepage">
           <HomePage />
         </PrivateRoute>
-        <PrivateRoute exact path="/add">
+        <PrivateRoute path="/add">
           <NewPoll />
         </PrivateRoute>
-        <PrivateRoute exact path="/leaderboard">
+        <PrivateRoute path="/leaderboard">
           <LeaderBoardPage />
         </PrivateRoute>
-        <PrivateRoute exact path="/questions/:question_id">
+        <PrivateRoute path="/questions/:question_id">
           <PollDetails />
         </PrivateRoute>
         <Route path="*">
