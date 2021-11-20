@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Form, Input, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { addNewPoll } from "../polls/pollsSlice";
 import { selectAuthedUser } from "../authuser/authuserSlice";
-import { useHistory } from "react-router";
+import { Form, Input, Button } from "antd";
 
 const NewPollForm = () => {
   // component state (local)

@@ -1,10 +1,10 @@
 import React from "react";
-import { formatDate } from "../../utils/helpers";
 import { useSelector } from "react-redux";
+import { selectAuthedUser } from "../authuser/authuserSlice";
 import { selectPollById } from "../polls/pollsSlice";
 import { selectUserById } from "../users/usersSlice";
+import { formatDate } from "../../utils/helpers";
 import { Card, Space, Typography, Progress, Divider, Badge } from "antd";
-import { selectAuthedUser } from "../authuser/authuserSlice";
 import UserAvatar from "../users/Avatar";
 import Page404 from "../../pages/Page404";
 

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { logout, selectAuthedUser } from "../features/authuser/authuserSlice";
+import { selectUserById } from "../features/users/usersSlice";
 import { Menu, Affix, Button, Image, Avatar, Typography } from "antd";
 import {
   HomeOutlined,
@@ -8,10 +11,6 @@ import {
   LoginOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
-import { useDispatch, useSelector } from "react-redux";
-import { logout, selectAuthedUser } from "../features/authuser/authuserSlice";
-import { useHistory } from "react-router-dom";
-import { selectUserById } from "../features/users/usersSlice";
 
 const Navbar = () => {
   // connect to store

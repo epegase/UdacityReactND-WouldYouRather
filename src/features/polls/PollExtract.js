@@ -1,12 +1,12 @@
 import React from "react";
-import { Card, Radio, Space, Button, Typography } from "antd";
-import UserAvatar from "../users/Avatar";
-import { formatDate } from "../../utils/helpers";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { Card, Radio, Space, Button, Typography } from "antd";
+import { formatDate } from "../../utils/helpers";
 import { selectPollById } from "./pollsSlice";
 import { selectUserById } from "../users/usersSlice";
 import { selectAuthedUser } from "../authuser/authuserSlice";
+import UserAvatar from "../users/Avatar";
 
 const PollExtract = ({ id }) => {
   const question = useSelector((state) => selectPollById(state, id));

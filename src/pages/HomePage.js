@@ -1,17 +1,15 @@
 import React, { useEffect } from "react";
-import Navbar from "../app/Navbar";
-import { Tabs } from "antd";
-import ListofPollExtract from "../features/polls/ListofPollExtract";
 import { useSelector, useDispatch } from "react-redux";
+import { Tabs } from "antd";
 import { fetchPolls, selectPollIds } from "../features/polls/pollsSlice";
 import { selectAuthedUser } from "../features/authuser/authuserSlice";
 import { fetchUsers, selectUserById } from "../features/users/usersSlice";
+import ListofPollExtract from "../features/polls/ListofPollExtract";
+import Navbar from "../app/Navbar";
 
 const HomePage = () => {
   const { TabPane } = Tabs;
-  function callback(key) {
-    console.log(key);
-  }
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPolls());
@@ -34,7 +32,7 @@ const HomePage = () => {
     <div>
       <Navbar />
       <div className="home-tabs">
-        <Tabs onChange={callback} type="card">
+        <Tabs type="card">
           <TabPane tab="Unanswered" key="1">
             <ListofPollExtract
               idsList={unansweredQuestionIds}

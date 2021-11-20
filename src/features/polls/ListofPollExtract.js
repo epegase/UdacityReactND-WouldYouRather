@@ -1,7 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Typography } from "antd";
 import PollExtract from "./PollExtract";
-import PropTypes from "prop-types";
 
 const ListofPollExtract = ({ idsList, emptyListNote }) => {
   const { Text } = Typography;

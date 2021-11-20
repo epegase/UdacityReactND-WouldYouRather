@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory, useLocation } from "react-router-dom";
+import { Form, Button, Select, Image, Typography } from "antd";
 import { selectAllUsers, fetchUsers } from "../users/usersSlice";
 import { fetchPolls } from "../polls/pollsSlice";
-import { Form, Button, Select, Image, Typography } from "antd";
 import { login } from "../authuser/authuserSlice";
-import { useHistory, useLocation } from "react-router-dom";
 
 const Login = () => {
   // component state

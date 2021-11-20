@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { PrivateRoute } from "./features/authuser/PrivateRoute";
 import HomePage from "./pages/HomePage";
 import PollDetails from "./pages/PollDetails";
 import NewPoll from "./pages/NewPoll";
 import LeaderBoardPage from "./pages/LeaderBoardPage";
 import LoginPage from "./pages/LoginPage";
 import Page404 from "./pages/Page404";
-import { PrivateRoute } from "./features/authuser/PrivateRoute";
 
 function App() {
   return (
@@ -24,9 +24,14 @@ function App() {
         <PrivateRoute path="/leaderboard">
           <LeaderBoardPage />
         </PrivateRoute>
-        <PrivateRoute path="/questions/:question_id">
-          <PollDetails />
-        </PrivateRoute>
+        <Switch>
+          <PrivateRoute path="/questions/:question_id">
+            <PollDetails />
+          </PrivateRoute>
+          <Route path="*">
+            <Page404 />
+          </Route>
+        </Switch>
         <Route path="*">
           <Page404 />
         </Route>

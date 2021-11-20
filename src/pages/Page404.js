@@ -1,6 +1,6 @@
 import React from "react";
-import { Typography, Image } from "antd";
 import { Link } from "react-router-dom";
+import { Typography, Image } from "antd";
 
 const Page404 = () => {
   const { Title, Text } = Typography;

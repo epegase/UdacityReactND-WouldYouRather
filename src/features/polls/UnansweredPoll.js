@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Card, Radio, Space, Button, Typography } from "antd";
 import { useSelector, useDispatch } from "react-redux";
-import { selectPollById, savePollAnswer } from "../polls/pollsSlice";
-import { formatDate } from "../../utils/helpers";
+import { useHistory } from "react-router-dom";
 import { selectAuthedUser } from "../authuser/authuserSlice";
 import { selectUserById } from "../users/usersSlice";
-import { useHistory, useParams } from "react-router-dom";
+import { selectPollById, savePollAnswer } from "../polls/pollsSlice";
+import { Card, Radio, Space, Button, Typography } from "antd";
+import { formatDate } from "../../utils/helpers";
 import UserAvatar from "../users/Avatar";
 import Page404 from "../../pages/Page404";
 
-const UansweredPoll = ({ id }) => {
+const UnansweredPoll = ({ id }) => {
   const { Text } = Typography;
   const pollId = useSelector((state) => selectPollById(state, id));
   const authuser = useSelector(selectAuthedUser);
@@ -33,13 +33,6 @@ const UansweredPoll = ({ id }) => {
     history.push("/homepage");
   };
 
-  let { question_id } = useParams();
-  console.log(question_id);
-  /* if (pollId === null && question_id !== id) {
-    dispatch(logout());
-    history.push("/");
-    return <Page404 />;
-  } */
   if (pollId === null) {
     return <Page404 />;
   }
@@ -73,4 +66,4 @@ const UansweredPoll = ({ id }) => {
   );
 };
 
-export default UansweredPoll;
+export default UnansweredPoll;
